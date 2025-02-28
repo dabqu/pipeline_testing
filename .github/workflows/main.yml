@@ -1,0 +1,20 @@
+name: Unity Build
+on: [push, pull_request]
+jobs:
+  buildForWindows:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Cache unity packages
+        uses: actions/cache@v2
+        with:
+          path: Library
+          key: ${{ runner.os }}-library-${{ hashFiles('**/Packages/manifest.json') }}
+
+      - name: Build project
+        uses: webbertakken/unity-builder@v2
+        with:
+          unityVersion: 2021.3.0f1
+          targetPlatform: StandaloneWindows64
