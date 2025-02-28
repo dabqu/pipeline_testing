@@ -4,7 +4,6 @@ using UnityEngine.PlayerLoop;
 public class CubeController : MonoBehaviour
 {
     public int foo = 10;
-    public int bar = 10;
     public GameObject cubePrefab;
 
     void Awake()
